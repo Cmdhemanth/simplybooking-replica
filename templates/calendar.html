@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Calendar</title>
+    <link rel="stylesheet" href="../static/styles/calendar.css" />
+    <link rel="stylesheet" href="../static/styles/dashboard.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-flex-container">
+        <img src="../static/images/logo.svg" class="logo" alt="logo" />
+
+        <div class="header-icons-container">
+          <div class="header-icon-wrapper icon-wrapper-orange">
+            <img
+              src="../static/images/bell-icon.svg"
+              class="header-icon"
+              alt="bell"
+            />
+          </div>
+
+          <div class="header-icon-wrapper icon-wrapper-red">
+            <img
+              src="../static/images/mail-icon.svg"
+              class="header-icon"
+              alt="mail"
+            />
+          </div>
+
+          <div class="header-icon-wrapper icon-wrapper-green">
+            <img
+              src="../static/images/event-icon.svg"
+              class="header-icon"
+              alt="event"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="header-flex-container" style="align-items: center">
+        <div class="header-search">
+          <img
+            src="../static/images/search-icon.svg"
+            class="header-icon"
+            alt="event"
+          />
+
+          <input
+            class="header-search-input"
+            type="text"
+            placeholder="Search with AI assistant..."
+          />
+        </div>
+      </div>
+
+      <div class="header-side-btns">
+        <button class="upgrade-link-btn">Upgrade</button>
+        <button class="website-link-btn">
+          <img
+            src="../static/images/link-icon.png"
+            alt="link"
+            class="header-icon"
+          />
+
+          My Booking Website
+        </button>
+      </div>
+    </header>
+
+    <main class="main-container">
+      <section class="side-bar-section">
+        <div class="side-bar-options">Dashboard</div>
+        <div class="side-bar-options side-bar-options--active">Calendar</div>
+        <div class="side-bar-options">Manage</div>
+        <div class="side-bar-options">Payments</div>
+      </section>
+
+      <section class="calendar-section">
+        <div class="main-title-container">
+          <div>Calendar</div>
+
+          <div class="main-title-btns">
+            <button class="transactions-btn btn">Transactions</button>
+            <button class="all-notes-btn btn">All notes</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
