@@ -193,35 +193,43 @@
           Already have an account? <a href="#" class="login-link">Log in</a>
         </p>
       </div>
-      <div class="address-section">
-        <h2>Address</h2>
-        <div class="form-group">
-          <label for="country">Country</label>
-          <select id="country">
-            <option value="India">India</option>
-            <option value="USA">USA</option>
-            <option value="UK">United Kingdom</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="state">State (if applicable)</label>
-          <input type="text" id="street" placeholder="Karnataka" />
-        </div>
-        <div class="form-group">
-          <label for="city">City</label>
-          <input type="text" id="city" placeholder="Mysore" />
-        </div>
-        <div class="form-group">
-          <label for="street">Street address</label>
-          <input
-            type="text"
-            id="street"
-            placeholder="Allanahalli, devegowda circle"
-          />
-        </div>
+      <form action="/register-complete/{{company_id}}" method="POST">
+        <div class="address-section">
+          <h2>Address</h2>
+          <div class="form-group">
+            <label for="country">Country</label>
+            <select id="country" name="country">
+              <option value="India">India</option>
+              <option value="USA">USA</option>
+              <option value="UK">United Kingdom</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="state">State (if applicable)</label>
+            <input
+              type="text"
+              name="state"
+              id="street"
+              placeholder="Karnataka"
+            />
+          </div>
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" name="city" id="city" placeholder="Mysore" />
+          </div>
+          <div class="form-group">
+            <label for="street">Street address</label>
+            <input
+              type="text"
+              id="street"
+              name="address"
+              placeholder="Allanahalli, devegowda circle"
+            />
+          </div>
 
-        <button class="btn">Continue</button>
-      </div>
+          <button class="btn">Continue</button>
+        </div>
+      </form>
     </div>
   </body>
 </html>

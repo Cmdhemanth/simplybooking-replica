@@ -186,21 +186,31 @@
       </div>
       <div class="right-panel">
         <h2>General company information</h2>
-        <form>
+        <form action="/register-name-save" method="POST">
           <div class="form-group">
             <label for="company-login"
               >Company login (part of URL, cannot be changed)</label
             >
             <div class="input-group">
               <span>https://</span>
-              <input type="text" id="company-login" placeholder="companyname" />
+              <input
+                type="text"
+                name="company"
+                id="company-login"
+                placeholder="companyname"
+              />
 
               <span>.simplybook.me</span>
             </div>
           </div>
           <div class="form-group">
             <label for="work-phone">Work phone</label>
-            <input type="text" id="work-phone" value="081234 56789" />
+            <input
+              type="text"
+              name="phone"
+              id="work-phone"
+              value="081234 56789"
+            />
           </div>
           <div class="form-group">
             <label for="country">Please choose your business category</label>
@@ -214,12 +224,12 @@
               >
                 select a business category
               </option>
-              <option value="India">Sports</option>
-              <option value="India">Medical</option>
-              <option value="India">Event and Environment</option>
-              <option value="India">Education</option>
-              <option value="India">Beauty and wellness</option>
-              <option value="India">Other category</option>
+              <option value="Sports">Sports</option>
+              <option value="Medical">Medical</option>
+              <option value="Event Management">Event Management</option>
+              <option value="Education">Education</option>
+              <option value="Beauty and Wellness">Beauty and wellness</option>
+              <option value="Others">Other category</option>
             </select>
           </div>
           <button type="submit">Continue</button>
