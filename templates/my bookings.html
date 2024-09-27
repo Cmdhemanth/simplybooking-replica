@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Reviews</a></li>
+                <li><a href="#" class="active">My Bookings</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="header">
+                <a href="#" class="back">← Back to services</a>
+            </div>
+
+            <div class="tabs">
+                <a href="#" class="active-tab">Upcoming bookings</a>
+                <a href="#">All bookings</a>
+            </div>
+
+            <div class="message">
+                <p>There are no appointments yet. Press the "Book Now" button to make an appointment.</p>
+            </div>
+            <nav>
+                <a href="#">Back to services</a>
+              </nav>
+              <main>
+                <div class="service-card">
+                  <div class="service-icon">
+                    </div>
+                  <div class="service-details">
+                      <h3 style="margin-bottom:20px;text-align:center;margin-right:10px">Online Tutoring</h3>
+                      <hr/>
+                      <table cellspacing="20">
+                          <tr>
+                              <th>Date</th>
+                              <td>26-09-2024 15:50</td>
+                          </tr>
+                          <tr>
+                              <th>Ends at</th>
+                              <td>16:50</td>
+                          </tr>
+                          <tr>
+                              <th>Provider</th>
+                              <td>Hitesh</td>
+                          </tr>
+                          <tr>
+                              <th>Booking Code</th>
+                              <td>3d0v9j7f</td>
+                          </tr>
+                          <tr>
+                              <th>Status</th>
+                              <td>Confirmed</td>
+                          </tr>
+                          <tr>
+                              <th>Sales Order #</th>
+                              <td>#O-00000010</td>
+                          </tr>
+                      </table>
+                      <p>Items:</p>
+                      
+                  </div>
+                  <div class="service-actions">
+                    <div></div>
+                    <button>Book More</button>
+                  </br>
+                    
+                    <button>Cancel</button>
+                  <br>
+                    <button>Add To Calendar</button>
+         
+                </div>
+                  </div>
+                </div>
+              </main>
+            
+        </div>
+    </div>
+    <div class="booking-container">
+       
+       
+</body>
+</html>
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #f0f0f5;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 20px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #4f4f4f;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar ul li a.active {
+    background-color: #e0e0f5;
+    font-weight: bold;
+}
+
+.sidebar ul li a:hover {
+    background-color: #e5e5e5;
+}
+
+.content {
+    flex: 1;
+    padding: 40px;
+    background-color: #fff;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.header .back {
+    text-decoration: none;
+    color: #4f4f4f;
+    font-size: 16px;
+}
+
+.tabs {
+    margin-bottom: 20px;
+}
+
+.tabs a {
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #4f4f4f;
+    margin-right: 10px;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.3s ease;
+}
+
+.tabs a.active-tab {
+    border-bottom: 2px solid #4f4f4f;
+}
+
+.message {
+    background-color: #f0f0f5;
+    padding: 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #4f4f4f;
+    text-align: center;
+}
+.booking-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  
+  
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: bold;
+}
+
+
+
+nav {
+  margin-bottom: 20px;
+}
+
+.service-card {
+  border: 10px solid #ccc;
+  padding: 40px;
+  height:650px;
+  width:400px;
+  color:black;
+  Font:16px; 
+  /* display:flex; */
+  /* flex-direction: column; */
+  align-items:center;
+  justify-content:center;
+
+
+}
+
+.service-details {
+  margin-left: 20px;
+  height:328;
+  width:586;
+  justify-content:center;
+  word-spacing:5px;
+  align-items:center;
+
+}
+
+.service-actions  buttons {
+  display: block;
+  justify-content: 40px;
+  height:160;
+  width:40;
+  
+  
+}
+
+ button{
+    padding:5px 10px;
+    background-color:#FF7A93;
+    color:black;
+    cursor:pointer;
+
+ }
+ button:hover{
+    background-color:WHITE;
+ }
+ th, td{
+  padding-bottom:15px;
+  text-align: left;
+ }
+</style>
+
+

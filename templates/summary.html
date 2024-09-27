@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: white;
+      }
+      .container {
+        width: 100%; 
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .header2 {
+        color: #4a154b;
+        margin: 0;
+      }
+      .order-details {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+      .order-details th,
+      .order-details td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      .order-details th {
+        background-color: #4a154b;
+        color: white;
+      }
+      .order-details td {
+        color: #333;
+      }
+      .order-details .price,
+      .order-details .tax,
+      .order-details .amount {
+        text-align: right;
+      }
+      .gst-section {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+      }
+      .total-amount {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.2em;
+      }
+      .proceed-btn {
+        width: 200px;
+        padding: 12px;
+        background-color: #e99d6e;
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 30px;
+      }
+      .proceed-btn:hover {
+        background-color: #c98e5a;
+      }
+      .proceed-container{
+        width:100%;
+        display: flex;
+        justify-content: right;
+        margin-top: 12px;
+      }
+
+      .list-container{
+            background-color: white;
+            width: 200px;
+            height: 100%;
+            text-align: center;
+            border: 2px solid gray;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+        }
+
+      .main-container {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        justify-items: left;
+        gap: 50px;
+
+        width: 60%;
+      }
+
+      .body-container {
+        display: flex;
+        width: 100%;
+        min-height: 70vh;
+        justify-content: center;
+        align-items: center;
+      }
+      .transparent{
+        appearance: none;
+            outline: none;
+            border: none;
+            background-color: transparent;
+      }
+    </style>
+  </head>
+  <body class="body-container">
+    <div class="main-container">
+        <div class="list-container">
+            <button class="transparent">Home</button><br><br>
+            <button class="transparent"> Reviews</button><br><br>
+            <button class=" transparent">My Bookings</button><br><br>
+        </div>
+
+        <div class="container">
+            <div class="header">
+              <h3>Order Summary</h3>
+              <p>Date: 25-09-2024</p>
+              <p>Due date: 30-09-2024</p>
+            </div>
+            <table class="order-details">
+              <tr>
+                <th>Name</th>
+                <th class="price">Price</th>
+                <th class="tax">Tax</th>
+                <th class="amount">Amount</th>
+              </tr>
+              <tr>
+                <td>1 x Cheap Service (25-09-2024 15:00, 3d0v6mp0)</td>
+                <td class="price">₹1.00</td>
+                <td class="tax">₹0.5</td>
+                <td class="amount">₹1.00</td>
+              </tr>
+            </table>
+            <div class="GST">
+              <span>GST:</span>
+              <span>₹0.15</span>
+            </div>
+            <div class="total-amount">
+              <span>Total amount</span>
+              <span>₹1.00</span>
+            </div>
+            <div class="proceed-container">
+              <button class="proceed-btn">Proceed</button>
+            </div>
+          </div>
+    </div>
+
+    
+  </body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SimplyBook Registration</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        display: flex;
+        width: 100%;
+        height: 100vh;
+      }
+
+      .left-panel {
+        background-color: #edf6ff;
+        width: 40%;
+        padding: 40px;
+        text-align: left;
+      }
+
+      .left-panel h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+
+      .left-panel p {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      .left-panel ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .left-panel ul li {
+        font-size: 16px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+      }
+
+      .left-panel a {
+        color: #007bff;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .right-panel {
+        background-color: white;
+        width: 60%;
+        padding: 40px;
+      }
+
+      .right-panel h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 30px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 14px;
+      }
+
+      .input-group {
+        display: flex;
+        align-items: center;
+      }
+
+      .input-group input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        flex: 1;
+      }
+
+      .input-group span {
+        padding: 10px;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        border-left: 0;
+      }
+
+      .error {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+
+      button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      input[type="text"],
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .step-indicator li:before {
+        content: "✔";
+        color: #252246;
+        margin-right: 10px;
+      }
+      .head {
+        display: flex;
+        display: row;
+        padding: 1px 0px;
+        gap: 1000px;
+      }
+      .language {
+        gap: 50px;
+
+        border-color: #252246;
+        border-radius: 1%;
+      }
+
+      .image {
+        display: flex;
+        display: row;
+        height: 100px;
+        width: 100px;
+        gap: 10px;
+        padding: 0px 500px 0px;
+      }
+      .foot {
+        align-items: center;
+      }
+      .sophiya {
+        align-items: center;
+        justify-content: center;
+        padding: 4px 10px 0px;
+      }
+      .rights {
+        display: flex;
+        align-items: center;
+        padding: 4px 10px 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-panel">
+        <h1>Register your company</h1>
+        <p>
+          Your free 14-day trial includes most features and 50 bookings. No
+          credit card is needed.
+        </p>
+        <div class="step-indicator">
+          <ul>
+            <li>General company information</li>
+            <li>Address</li>
+            <li>Login information</li>
+          </ul>
+          <img
+            src="https://simplybook.me/build/images/how-it-works/how-it-works.f1e5d4da.png"
+            alt="Blue Bird"
+            class="blue-bird"
+          />
+        </div>
+        <p>
+          Already have an account? <a href="#" class="login-link">Log in</a>
+        </p>
+      </div>
+      <div class="right-panel">
+        <h2>General company information</h2>
+        <form>
+          <div class="form-group">
+            <label for="company-login"
+              >Company login (part of URL, cannot be changed)</label
+            >
+            <div class="input-group">
+              <span>https://</span>
+              <input type="text" id="company-login" placeholder="companyname" />
+
+              <span>.simplybook.me</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="work-phone">Work phone</label>
+            <input type="text" id="work-phone" value="081234 56789" />
+          </div>
+          <div class="form-group">
+            <label for="country">Please choose your business category</label>
+
+            <select id="country" name="category">
+              <option
+                value="choose your business category"
+                disabled
+                selected
+                hidden
+              >
+                select a business category
+              </option>
+              <option value="India">Sports</option>
+              <option value="India">Medical</option>
+              <option value="India">Event and Environment</option>
+              <option value="India">Education</option>
+              <option value="India">Beauty and wellness</option>
+              <option value="India">Other category</option>
+            </select>
+          </div>
+          <button type="submit">Continue</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
