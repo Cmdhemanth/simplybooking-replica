@@ -111,12 +111,13 @@ def register_complete(company_id):
     
 @app.route('/dashboard/<int:company_id>')
 def dashboard(company_id):
+
     return render_template('dashboard.html', company_id=company_id)
 
 @app.route('/booking/home/<int:company_id>')
 def booking_home(company_id):
     company = Company.query.get(company_id)
-    company_location = CompanyAddress.query.get(company_id)
+    company_location = CompanyAddress.query.filter_by(company_id=company_id).first()
 
     return render_template('home.html', company=company, company_location=company_location)
 
