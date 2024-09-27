@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, make_response
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -39,6 +39,27 @@ class CompanyAddress(db.Model):
 
     def __repr__(self):
         return f"{self.company_id}, {self.address}, {self.city}, {self.state}, {self.country}"
+    
+class Bookings(db.Model):
+    __tablename__ = 'bookings'
+    id = db.Column(db.Integer, primary_key=True)
+    company_id = db.Column(db.Integer, db.ForeignKey('companies.id'))
+    name = db.Column(db.String(80), nullable=False)
+    phone = db.Column(db.String(80), nullable=False)
+    email = db.Column(db.String(80), nullable=False)
+    date = db.Column(db.String(80), nullable=False)
+    duration = db.Column(db.Integer, nullable=False)
+
+    def __init__(self, company_id, name, phone, email, date, duration):
+        self.company_id = company_id
+        self.name = name
+        self.phone = phone
+        self.email = email
+        self.date = date
+        self.duration = duration
+
+    def __repr__(self):
+        return f"{self.company_id}, {self.name}, {self.phone}, {self.email}, {self.date}, {self.duration}"
 
 @app.route('/', methods=['GET'])
 def index():
@@ -84,9 +105,20 @@ def register_complete(company_id):
         db.session.add(address)
         db.session.commit()
 
-        return render_template('register-complete.html', address=address)
+        return redirect(f"/dashboard/{company_id}")
     else:
         return redirect(url_for('register_name'))
+    
+@app.route('/dashboard/<int:company_id>')
+def dashboard(company_id):
+    return render_template('dashboard.html', company_id=company_id)
+
+@app.route('/booking/home/<int:company_id>')
+def booking_home(company_id):
+    company = Company.query.get(company_id)
+    company_location = CompanyAddress.query.get(company_id)
+
+    return render_template('home.html', company=company, company_location=company_location)
 
 if __name__ == "__main__":
     with app.app_context():
