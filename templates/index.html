@@ -192,7 +192,7 @@
               Company Login
             </p>
           </div>
-          <form action="add" method="POST">
+          <form action="/signin" method="POST">
             <input
               type="username"
               name="username"
@@ -208,42 +208,44 @@
                 font-size: 20px;
               "
             />
-          </form>
-          <div class="modal-body-bottom">
-            <a
+
+            <div class="modal-body-bottom">
+              <a
+                style="
+                  color: #06adef;
+                  font-size: 16px;
+                  font-family: sans-serif;
+                  margin: 0px 0px 10px;
+                  line-height: 1;
+                  letter-spacing: 0.01em;
+                  font-weight: 400;
+                "
+                class="forgot-company"
+                >Forgot Company Login</a
+              >
+            </div>
+            <button
+              type="submit"
               style="
-                color: #06adef;
+                width: 123px;
+                height: 45px;
                 font-size: 16px;
-                font-family: sans-serif;
-                margin: 0px 0px 10px;
+                color: #fff;
+                background-color: #ff3259;
+                padding: 10px 35px;
                 line-height: 1;
                 letter-spacing: 0.01em;
-                font-weight: 400;
+                border-radius: 50px;
+                border: 1px solid #ff3259;
+                margin-left: 35%;
+                margin-top: 10px;
+                font-weight: 600;
+                margin-bottom: 20px;
               "
-              class="forgot-company"
-              >Forgot Company Login</a
             >
-          </div>
-          <button
-            style="
-              width: 123px;
-              height: 45px;
-              font-size: 16px;
-              color: #fff;
-              background-color: #ff3259;
-              padding: 10px 35px;
-              line-height: 1;
-              letter-spacing: 0.01em;
-              border-radius: 50px;
-              border: 1px solid #ff3259;
-              margin-left: 35%;
-              margin-top: 10px;
-              font-weight: 600;
-              margin-bottom: 20px;
-            "
-          >
-            Sign in
-          </button>
+              Sign in
+            </button>
+          </form>
           <div
             class="google-button"
             style="

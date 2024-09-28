@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Calendar</title>
+    <link rel="stylesheet" href="../static/styles/manage-items.css" />
+    <link rel="stylesheet" href="../static/styles/dashboard.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-flex-container">
+        <img src="../static/images/logo.svg" class="logo" alt="logo" />
+
+        <div class="header-icons-container">
+          <div class="header-icon-wrapper icon-wrapper-orange">
+            <img
+              src="../static/images/bell-icon.svg"
+              class="header-icon"
+              alt="bell"
+            />
+          </div>
+
+          <div class="header-icon-wrapper icon-wrapper-red">
+            <img
+              src="../static/images/mail-icon.svg"
+              class="header-icon"
+              alt="mail"
+            />
+          </div>
+
+          <div class="header-icon-wrapper icon-wrapper-green">
+            <img
+              src="../static/images/event-icon.svg"
+              class="header-icon"
+              alt="event"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="header-flex-container" style="align-items: center">
+        <div class="header-search">
+          <img
+            src="../static/images/search-icon.svg"
+            class="header-icon"
+            alt="event"
+          />
+
+          <input
+            class="header-search-input"
+            type="text"
+            placeholder="Search with AI assistant..."
+          />
+        </div>
+      </div>
+
+      <div class="header-side-btns">
+        <button class="upgrade-link-btn">Upgrade</button>
+        <button
+          class="website-link-btn"
+          onclick="window.location.href='/booking/home/{{company_id}}'"
+        >
+          <img
+            src="../static/images/link-icon.png"
+            alt="link"
+            class="header-icon"
+          />
+
+          My Booking Website
+        </button>
+      </div>
+    </header>
+
+    <main class="main-container">
+      <section class="side-bar-section">
+        <div class="side-bar-options" onclick="window.location.href='/'">
+          Home
+        </div>
+        <div
+          class="side-bar-options"
+          onclick="window.location.href='/dashboard/{{company_id}}'"
+        >
+          Dashboard
+        </div>
+        <div class="side-bar-options side-bar-options--active">Manage</div>
+      </section>
+
+      <section class="services-section">
+        <h3 class="services-main-title">Services</h3>
+
+        <div class="services-layout">
+          <div>
+            {% for service in services %}
+
+            <div class="service-container">
+              <img
+                src="../static/images/shopping-cart.svg"
+                class="cart-icon"
+                alt="shopping-cart"
+              />
+              <div>
+                <div class="service-name">{{service.name}}</div>
+                <div class="service-duration">
+                  {{service.hours}} h + {{service.mins}} mins
+                </div>
+              </div>
+            </div>
+
+            {% endfor %}
+          </div>
+          <form
+            class="add-service-container"
+            action="/manage-items/{{company_id}}"
+            method="POST"
+          >
+            <div class="add-service-title">
+              Service Details
+
+              <button type="submit" class="add-service-btn btn">Save</button>
+            </div>
+
+            <div class="add-input-container">
+              <div style="line-height: 1.5">Service name</div>
+              <input
+                type="text"
+                class="service-name-input inputs"
+                placeholder="Service name"
+                name="name"
+              />
+            </div>
+
+            <div class="add-input-container">
+              <div style="line-height: 1.5">Service Description</div>
+              <textarea
+                type=""
+                class="service-name-input inputs"
+                placeholder="                 "
+                style="height: 100px"
+                name="description"
+              ></textarea>
+            </div>
+
+            <div>
+              <div>Service Duration</div>
+
+              <div class="add-duration-container">
+                <div>
+                  <div>Hours</div>
+                  <input
+                    type="number"
+                    class="service-name-input inputs"
+                    placeholder="hours"
+                    name="hours"
+                  />
+                </div>
+                <div>
+                  <div>Minutes</div>
+                  <input
+                    type="number"
+                    class="service-name-input inputs"
+                    placeholder="mins"
+                    name="minutes"
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

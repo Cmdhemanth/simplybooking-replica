@@ -1,0 +1,103 @@
+.services-section {
+  margin-left: 200px;
+  padding: 20px;
+}
+
+.services-main-title {
+  font-size: 34px;
+  font-weight: 400;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #06adef;
+  margin-bottom: 30px;
+}
+
+.service-container {
+  display: flex;
+  gap: 1rem;
+  width: 400px;
+  padding: 1rem;
+  border-bottom: 1px solid #e7ecf7;
+}
+
+.service-name {
+  font-size: 14px;
+  line-height: 1.45;
+  margin-bottom: 2px;
+}
+
+.service-duration {
+  font-size: 12px;
+  color: #788291;
+}
+
+.services-layout {
+  display: flex;
+  gap: 2rem;
+}
+
+.add-service-container {
+  padding: 22px 20px;
+  background: rgba(241, 246, 255, 0.5);
+  border-radius: 5px;
+  color: #0b3052;
+  width: 100%;
+}
+
+.add-service-title {
+  margin-top: 16px;
+  background: #e7efff;
+  padding: 4px 20px;
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.btn {
+  appearance: none;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.add-service-btn {
+  background-color: #06adef;
+  border-color: #06adef;
+  color: #fff;
+  border-radius: 50px;
+  padding-left: 22px;
+  padding-right: 22px;
+  min-height: 36px;
+}
+
+.add-input-container {
+  margin-bottom: 2rem;
+}
+
+.inputs {
+  appearance: none;
+  border: none;
+  outline: none;
+}
+
+.service-name-input {
+  width: 100%;
+  color: #495057;
+  background-color: #fff;
+  height: 36px;
+  line-height: 1.5;
+  padding: 0 0 0 6px;
+  border: 1px solid #e7ecf7;
+}
+
+.add-duration-container {
+  display: flex;
+  gap: 1rem;
+
+  padding: 1rem;
+  font-size: 12px;
+}

@@ -74,10 +74,16 @@
 
     <main class="main-container">
       <section class="side-bar-section">
+        <div class="side-bar-options" onclick="window.location.href='/'">
+          Home
+        </div>
         <div class="side-bar-options side-bar-options--active">Dashboard</div>
-        <div class="side-bar-options">Calendar</div>
-        <div class="side-bar-options">Manage</div>
-        <div class="side-bar-options">Payments</div>
+        <div
+          class="side-bar-options"
+          onclick="window.location.href='/manage-items/{{company_id}}'"
+        >
+          Manage
+        </div>
       </section>
 
       <section class="details-section">
@@ -106,7 +112,7 @@
 
           <div class="small-top-section-container">
             <div class="small-top-section">
-              <div class="small-top-section-title">Bookings today</div>
+              <div class="small-top-section-title">Bookings this week</div>
 
               <div>
                 <img
@@ -128,7 +134,7 @@
 
           <div class="small-top-section-container">
             <div class="small-top-section">
-              <div class="small-top-section-title">Bookings today</div>
+              <div class="small-top-section-title">Workload this week</div>
 
               <div>
                 <img
@@ -144,13 +150,15 @@
               <div>-67.5%</div>
             </div>
 
-            <div class="small-section-count">2</div>
+            <div class="small-section-count">
+              2 <span style="font-size: 1.4rem; font-weight: 600">h</span>
+            </div>
             <div class="small-section-date">26-09-2024</div>
           </div>
 
           <div class="small-top-section-container">
             <div class="small-top-section">
-              <div class="small-top-section-title">Bookings today</div>
+              <div class="small-top-section-title">Revenue this week</div>
 
               <div>
                 <img
@@ -166,7 +174,9 @@
               <div>-67.5%</div>
             </div>
 
-            <div class="small-section-count">2</div>
+            <div class="small-section-count">
+              2 <span style="font-size: 1.4rem; font-weight: 600">inr</span>
+            </div>
             <div class="small-section-date">26-09-2024</div>
           </div>
         </div>

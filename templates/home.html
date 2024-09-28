@@ -247,7 +247,12 @@
           />
           <div class="header-text">
             <h1>{{company.name}}</h1>
-            <button class="book-now-btn">Book Now</button>
+            <button
+              class="book-now-btn"
+              onclick="window.location.href='/booking/book/{{company.id}}'"
+            >
+              Book Now
+            </button>
           </div>
         </div>
 

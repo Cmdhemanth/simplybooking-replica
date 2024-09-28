@@ -40,30 +40,66 @@ class CompanyAddress(db.Model):
     def __repr__(self):
         return f"{self.company_id}, {self.address}, {self.city}, {self.state}, {self.country}"
     
+class Services(db.Model):
+    __tablename__ = 'services'
+    id = db.Column(db.Integer, primary_key=True)
+    company_id = db.Column(db.Integer, db.ForeignKey('companies.id'))
+    name = db.Column(db.String(80), nullable=False)
+    description = db.Column(db.String(120), nullable=False)
+    hours = db.Column(db.Integer, nullable=False)
+    mins = db.Column(db.Integer, nullable=False)
+
+    def __init__(self, company_id, name, description, hours, mins):
+        self.company_id = company_id
+        self.name = name
+        self.description = description
+        self.hours = hours
+        self.mins = mins
+
+    def __repr__(self):
+        return f"{self.name}, {self.description}, {self.hours}, {self.mins}"
+    
 class Bookings(db.Model):
     __tablename__ = 'bookings'
     id = db.Column(db.Integer, primary_key=True)
     company_id = db.Column(db.Integer, db.ForeignKey('companies.id'))
+    service_id = db.Column(db.Integer, db.ForeignKey('services.id'))
     name = db.Column(db.String(80), nullable=False)
     phone = db.Column(db.String(80), nullable=False)
     email = db.Column(db.String(80), nullable=False)
     date = db.Column(db.String(80), nullable=False)
-    duration = db.Column(db.Integer, nullable=False)
+    
 
-    def __init__(self, company_id, name, phone, email, date, duration):
+    def __init__(self, company_id, service_id, name, phone, email, date):
         self.company_id = company_id
+        self.service_id = service_id
         self.name = name
         self.phone = phone
         self.email = email
         self.date = date
-        self.duration = duration
 
     def __repr__(self):
-        return f"{self.company_id}, {self.name}, {self.phone}, {self.email}, {self.date}, {self.duration}"
+        return f"{self.company_id}, {self.service_id}, {self.name}, {self.phone}, {self.email}, {self.date}"
 
 @app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
+
+@app.route('/signin', methods=['POST'])
+def signin():
+    if request.method == 'POST':
+        username = request.form['username']
+
+        if not username:
+            return redirect(url_for('index'))
+        
+        company = Company.query.filter_by(name=username).first()
+        if company:
+            return redirect(f"/dashboard/{company.id}")
+
+        
+        return redirect(url_for('index'))
+
 
 @app.route('/register')
 def register_name():
@@ -114,12 +150,40 @@ def dashboard(company_id):
 
     return render_template('dashboard.html', company_id=company_id)
 
+@app.route('/manage-items/<int:company_id>', methods=['POST', 'GET'])
+def manage_items(company_id):
+    if request.method == 'POST':
+        name = request.form.get('name')
+        description = request.form.get('description')
+        hours = request.form.get('hours')
+        mins = request.form.get('minutes')
+
+        if not name or not description or not hours or not mins:
+            return redirect(f"/manage-items/{company_id}")
+        
+        service = Services(company_id=company_id, name=name, description=description, hours=hours, mins=mins)
+        db.session.add(service)
+        db.session.commit()
+
+        return redirect(f"/manage-items/{company_id}")
+    else:
+        services = Services.query.filter_by(company_id=company_id).all()
+        return render_template('manage-items.html', company_id=company_id, services=services)
+
 @app.route('/booking/home/<int:company_id>')
 def booking_home(company_id):
     company = Company.query.get(company_id)
     company_location = CompanyAddress.query.filter_by(company_id=company_id).first()
 
     return render_template('home.html', company=company, company_location=company_location)
+
+@app.route('/booking/book/<int:company_id>', methods=['POST', 'GET'])
+def booking_book(company_id):
+    if request.method == "POST":
+        pass
+    else:
+        return render_template('book-now.html', company_id=company_id)
+
 
 if __name__ == "__main__":
     with app.app_context():
