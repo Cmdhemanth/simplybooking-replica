@@ -67,12 +67,12 @@
                               <td>#O-00000010</td>
                           </tr>
                       </table>
-                      <p>Items:</p>
+                      <!-- <p>Items:</p> -->
                       
                   </div>
                   <div class="service-actions">
-                    <div></div>
-                    <button>Book More</button>
+                    <button style="width:120px;height:40px;font-size:17px;color:#fff;font-weight:700;border:1px solid #FF7A93;border-radius: 30px;
+                    cursor:pointer;background-color: #FF7A93;">Book More</button>
                   </br>
                     
                     <button>Cancel</button>
@@ -101,7 +101,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
+    /* background-color: #f8f8f8; */
 }
 
 .container {
@@ -114,6 +114,7 @@ body {
     background-color: #f0f0f5;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    /* position:fixed; */
 }
 
 .sidebar ul {
@@ -243,19 +244,39 @@ nav {
   
 }
 
- button{
+ /* button{
     padding:5px 10px;
     background-color:#FF7A93;
     color:black;
     cursor:pointer;
+ } */
+
+ button{
+    width:120px;
+    height:40px;
+    font-size:17px;
+    color:#fff;
+    font-weight:700;
+    border:1px solid #FF7A93;
+    border-radius: 30px;
+    cursor:pointer;
+    background-color: #FF7A93;
+    margin:2px 0px 5px 30%;
 
  }
  button:hover{
-    background-color:WHITE;
+    height:45px;
+    font-size:20px;
+    color:#0b4052;
  }
  th, td{
   padding-bottom:15px;
   text-align: left;
+ }
+
+ .back:hover{
+    text-decoration: underline;
+
  }
 </style>
 
