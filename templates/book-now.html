@@ -75,7 +75,10 @@
           gap: 40px;
         "
       >
-        <div
+        {% for service in services %}
+
+        <form
+          action="/booking/confirm/{{service.id}}/{{company_id}}"
           class="content"
           style="
             width: 300px;
@@ -126,7 +129,7 @@
                 line-height: 1.6;
               "
             >
-              Online tutoring
+              {{service.name}}
             </h2>
             <p
               style="
@@ -136,7 +139,7 @@
                 margin-bottom: 30px;
               "
             >
-              Description
+              {{service.description}}
             </p>
             <input
               type="date"
@@ -159,11 +162,10 @@
                 margin-top: 20px;
               "
             >
-              <img
-                src="../static/clock.png"
-                style="width: 18px; height: 18px; margin-top: 2px"
-              />
-              <span style="color: gray; font-family: sans-serif">1 hr</span>
+              <span style="color: gray; font-family: sans-serif"
+                >{{service.hours if service.hours else 0}} hr {{service.mins if
+                service.mins else 0}} min</span
+              >
             </div>
             <p
               style="
@@ -173,8 +175,9 @@
                 font-family: sans-serif;
               "
             >
-              &#8377; 10,000.00
+              &#8377; {{service.hours * 95}}
             </p>
+            `
             <div class="avail-time" style="width: 270px">
               <h4
                 style="
@@ -191,6 +194,7 @@
                   width: 100%;
                   display: flex;
                   flex-direction: row;
+                  justify-content: center;
                   gap: 5px;
                 "
               >
@@ -199,33 +203,7 @@
                   style="
                     border: 1px solid gray;
                     text-align: center;
-                    padding: 4px;
-                    border-radius: 50px;
-                    font-family: sans-serif;
-                    font-size: 12px;
-                  "
-                >
-                  9:00 - 10:30
-                </div>
-                <div
-                  class="slot"
-                  style="
-                    border: 1px solid gray;
-                    text-align: center;
-                    padding: 4px;
-                    border-radius: 50px;
-                    font-family: sans-serif;
-                    font-size: 12px;
-                  "
-                >
-                  9:00 - 10:30
-                </div>
-                <div
-                  class="slot"
-                  style="
-                    border: 1px solid gray;
-                    text-align: center;
-                    padding: 4px;
+                    padding: 5px 10px;
                     border-radius: 50px;
                     font-family: sans-serif;
                     font-size: 12px;
@@ -253,186 +231,9 @@
           >
             Select
           </button>
-        </div>
-        <div
-          class="content"
-          style="
-            width: 300px;
-            height: 600px;
-            border-left: 3px solid #0b4052;
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            /* justify-content: center; */
-            align-items: center;
-            box-shadow: 0 3px 8px -2px rgba(11, 48, 82, 0.2);
-          "
-        >
-          <div class="content-bottom">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="100"
-              height="100"
-              viewBox="0 0 100 100"
-              fill="none"
-              src="/uploads/hiteshidk/image_files/preview/03347fa47d1c5c075c15165556a3d53f.svg"
-              class="sb-inline-svg"
-              data-exact="true"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M60.1075 19.5691C45.6462 19.5691 33.923 31.2923 33.923 45.7536C33.923 55.9016 39.6957 64.7023 48.1391 69.0491L48.1169 69.0922H72.0981L72.0759 69.0491C80.5193 64.7023 86.292 55.9016 86.292 45.7536C86.292 31.2923 74.5688 19.5691 60.1075 19.5691ZM74.3226 69.0922C82.1822 64.2949 87.4305 55.6376 87.4305 45.7536C87.4305 30.6636 75.1976 18.4307 60.1075 18.4307C45.0174 18.4307 32.7845 30.6636 32.7845 45.7536C32.7845 55.6376 38.0328 64.2949 45.8924 69.0922H35.6153C33.9946 69.0922 32.8928 70.7374 33.5099 72.236L35.6194 77.3591C35.9707 78.2122 36.8021 78.7691 37.7248 78.7691H81.6856C82.5427 78.7691 83.3272 78.2877 83.7154 77.5236L86.3186 72.4006C87.0883 70.8858 85.9878 69.0922 84.2888 69.0922H74.3226ZM79.4612 45.7536C79.4612 56.4424 70.7963 65.1074 60.1075 65.1074C49.4187 65.1074 40.7537 56.4424 40.7537 45.7536C40.7537 35.0648 49.4187 26.3998 60.1075 26.3998C70.7963 26.3998 79.4612 35.0648 79.4612 45.7536ZM80.5997 45.7536C80.5997 57.0712 71.425 66.2458 60.1075 66.2458C48.7899 66.2458 39.6152 57.0712 39.6152 45.7536C39.6152 34.4361 48.7899 25.2614 60.1075 25.2614C71.425 25.2614 80.5997 34.4361 80.5997 45.7536ZM24.2459 41.2892C24.2459 40.2651 23.1805 39.5889 22.2538 40.025L19.9943 41.0883C19.1781 41.4724 18.6571 42.2933 18.6571 43.1953V50.9284H24.2459V41.2892ZM17.7257 43.1953V50.9284H17.2601C16.4884 50.9284 15.8629 51.554 15.8629 52.3256V61.6405C14.834 61.6405 14 62.4746 14 63.5035V77.4754C14 78.5043 14.8341 79.3384 15.8629 79.3384H27.0405C28.0694 79.3384 28.9034 78.5043 28.9034 77.4754V63.5034C28.9034 62.4746 28.0694 61.6405 27.0405 61.6405H27.0405V52.3256C27.0405 51.554 26.4149 50.9284 25.6433 50.9284H25.1774V41.2892C25.1774 39.5823 23.4017 38.4554 21.8572 39.1822L19.5976 40.2455C18.455 40.7832 17.7257 41.9325 17.7257 43.1953ZM26.109 61.6405V52.3256C26.109 52.0684 25.9005 51.8599 25.6433 51.8599H17.2601C17.0029 51.8599 16.7943 52.0684 16.7943 52.3256V61.6405H26.109ZM15.8629 62.572H27.0405C27.5549 62.572 27.972 62.989 27.972 63.5034V77.4754C27.972 77.9899 27.5549 78.4069 27.0405 78.4069H15.8629C15.3485 78.4069 14.9315 77.9899 14.9315 77.4754V63.5035C14.9315 62.989 15.3485 62.572 15.8629 62.572ZM35.6153 70.2306H84.2888C85.1383 70.2306 85.6886 71.1275 85.3037 71.8848L82.7005 77.0079C82.5064 77.3899 82.1141 77.6306 81.6856 77.6306H37.7248C37.2634 77.6306 36.8477 77.3522 36.6721 76.9256L34.5626 71.8026C34.254 71.0533 34.8049 70.2306 35.6153 70.2306Z"
-                fill="#0B3052"
-              ></path>
-            </svg>
-          </div>
-          <hr style="width: 80%; height: 2px" />
-          <div
-            class="content-body"
-            style="
-              width: 70%;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-            "
-          >
-            <h2
-              style="
-                font-size: 20px;
-                color: #0b4052;
-                font-family: sans-serif;
-                line-height: 1.6;
-              "
-            >
-              Online tutoring
-            </h2>
-            <p
-              style="
-                color: gray;
-                font-family: sans-serif;
-                font-size: 16px;
-                margin-bottom: 30px;
-              "
-            >
-              Description
-            </p>
-            <input
-              type="date"
-              style="
-                width: 100%;
-                height: 30px;
-                border: 1px solid gray;
-                border-radius: 20px;
-                box-shadow: 0 3px 8px -2px rgba(11, 48, 82, 0.2);
-                padding: 10px;
-              "
-            />
-            <div
-              class="time-container"
-              style="
-                width: 98%;
-                align-items: flex-start;
-                padding: 5px;
-                justify-content: flex-start;
-                margin-top: 20px;
-              "
-            >
-              <img
-                src="../static/clock.png"
-                style="width: 18px; height: 18px; margin-top: 2px"
-              />
-              <span style="color: gray; font-family: sans-serif">1 hr</span>
-            </div>
-            <p
-              style="
-                width: 100%;
-                text-align: right;
-                font-weight: 700;
-                font-family: sans-serif;
-              "
-            >
-              &#8377; 10,000.00
-            </p>
-            <div class="avail-time" style="width: 270px">
-              <h4
-                style="
-                  font-family: sans-serif;
-                  color: #0b4052;
-                  font-size: 14px;
-                  text-align: center;
-                "
-              >
-                Available Times
-              </h4>
-              <div
-                style="
-                  width: 100%;
-                  display: flex;
-                  flex-direction: row;
-                  gap: 5px;
-                "
-              >
-                <div
-                  class="slot"
-                  style="
-                    border: 1px solid gray;
-                    text-align: center;
-                    padding: 4px;
-                    border-radius: 50px;
-                    font-family: sans-serif;
-                    font-size: 12px;
-                  "
-                >
-                  9:00 - 10:30
-                </div>
-                <div
-                  class="slot"
-                  style="
-                    border: 1px solid gray;
-                    text-align: center;
-                    padding: 4px;
-                    border-radius: 50px;
-                    font-family: sans-serif;
-                    font-size: 12px;
-                  "
-                >
-                  9:00 - 10:30
-                </div>
-                <div
-                  class="slot"
-                  style="
-                    border: 1px solid gray;
-                    text-align: center;
-                    padding: 4px;
-                    border-radius: 50px;
-                    font-family: sans-serif;
-                    font-size: 12px;
-                  "
-                >
-                  9:00 - 10:30
-                </div>
-              </div>
-            </div>
-          </div>
-          <button
-            type="submit"
-            style="
-              width: 250px;
-              height: 35px;
-              font-size: 16px;
-              background-color: orange;
-              border: 1px solid orange;
-              border-radius: 20px;
-              font-weight: 700;
-              color: #fff;
-              letter-spacing: 0.02rem;
-              margin-top: 20px;
-            "
-          >
-            Select
-          </button>
-        </div>
+        </form>
+
+        {% endfor %}
       </div>
     </div>
   </body>

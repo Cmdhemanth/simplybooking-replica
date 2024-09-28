@@ -16,7 +16,7 @@
         background-color: white;
       }
       .container {
-        width: 100%; 
+        width: 100%;
         background-color: white;
         border-radius: 8px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -79,24 +79,23 @@
       .proceed-btn:hover {
         background-color: #c98e5a;
       }
-      .proceed-container{
-        width:100%;
+      .proceed-container {
+        width: 100%;
         display: flex;
         justify-content: right;
         margin-top: 12px;
       }
 
-      .list-container{
-            background-color: white;
-            width: 200px;
-            height: 100%;
-            text-align: center;
-            border: 2px solid gray;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-
-        }
+      .list-container {
+        background-color: white;
+        width: 200px;
+        height: 100%;
+        text-align: center;
+        border: 2px solid gray;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
 
       .main-container {
         display: grid;
@@ -114,56 +113,61 @@
         justify-content: center;
         align-items: center;
       }
-      .transparent{
+      .transparent {
         appearance: none;
-            outline: none;
-            border: none;
-            background-color: transparent;
+        outline: none;
+        border: none;
+        background-color: transparent;
       }
     </style>
   </head>
   <body class="body-container">
     <div class="main-container">
-        <div class="list-container">
-            <button class="transparent">Home</button><br><br>
-            <button class="transparent"> Reviews</button><br><br>
-            <button class=" transparent">My Bookings</button><br><br>
+      <div class="list-container">
+        <button class="transparent">Home</button><br /><br />
+        <button class="transparent">Reviews</button><br /><br />
+        <button class="transparent">My Bookings</button><br /><br />
+      </div>
+
+      <div class="container">
+        <div class="header">
+          <h3>Order Summary</h3>
+          <p>Date: {{booking.date}}</p>
+          <p>Due date: 30-10-2024</p>
         </div>
-
-        <div class="container">
-            <div class="header">
-              <h3>Order Summary</h3>
-              <p>Date: 25-09-2024</p>
-              <p>Due date: 30-09-2024</p>
-            </div>
-            <table class="order-details">
-              <tr>
-                <th>Name</th>
-                <th class="price">Price</th>
-                <th class="tax">Tax</th>
-                <th class="amount">Amount</th>
-              </tr>
-              <tr>
-                <td>1 x Cheap Service (25-09-2024 15:00, 3d0v6mp0)</td>
-                <td class="price">₹1.00</td>
-                <td class="tax">₹0.5</td>
-                <td class="amount">₹1.00</td>
-              </tr>
-            </table>
-            <div class="GST">
-              <span>GST:</span>
-              <span>₹0.15</span>
-            </div>
-            <div class="total-amount">
-              <span>Total amount</span>
-              <span>₹1.00</span>
-            </div>
-            <div class="proceed-container">
-              <button class="proceed-btn">Proceed</button>
-            </div>
-          </div>
+        <table class="order-details">
+          <tr>
+            <th>Name</th>
+            <th class="price">Price</th>
+            <th class="tax">Tax</th>
+            <th class="amount">Amount</th>
+          </tr>
+          <tr>
+            <td>1 x {{service.name}} ({{booking.date}} 15:00, 3d0v6mp0)</td>
+            <td class="price">
+              ₹{{service.hours * 95 - service.hours * 95 * 0.15}}
+            </td>
+            <td class="tax">₹{{service.hours * 95 * 0.15}}</td>
+            <td class="amount">₹{{service.hours * 95}}</td>
+          </tr>
+        </table>
+        <div class="GST">
+          <span>GST:</span>
+          <span>₹{{service.hours * 95 * 0.15}}</span>
+        </div>
+        <div class="total-amount">
+          <span>Total amount</span>
+          <span>₹{{service.hours * 95}}</span>
+        </div>
+        <div class="proceed-container">
+          <button
+            class="proceed-btn"
+            onclick="window.location.href='/booking/home/{{company_id}}'"
+          >
+            Proceed
+          </button>
+        </div>
+      </div>
     </div>
-
-    
   </body>
 </html>

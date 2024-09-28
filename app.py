@@ -148,7 +148,32 @@ def register_complete(company_id):
 @app.route('/dashboard/<int:company_id>')
 def dashboard(company_id):
 
-    return render_template('dashboard.html', company_id=company_id)
+    company = Company.query.get(company_id)
+    bookings = Bookings.query.filter_by(company_id=company_id).all()
+    bookings_today = bookings_thisWeek = len(bookings)
+    workLoad = [0, 0]
+    revenue = 0
+    visits = 0
+
+    desingedBookings = []
+
+    for booking in bookings:
+        service = Services.query.get(booking.service_id)
+        workLoad[0] += service.hours
+        workLoad[1] += service.mins
+        print(workLoad)
+        revenue += service.hours * 96
+
+        desingedBookings.append({
+            'name': booking.name,
+            'phone': booking.phone,
+            'email': booking.email,
+            'date': booking.date,
+            'company_name': company.name,
+            'service_name': service.name
+        })
+
+    return render_template('dashboard.html', company_id=company_id, bookings=desingedBookings, bookings_today=bookings_today, bookings_thisWeek=bookings_thisWeek, workLoad=workLoad, revenue=revenue, visits=visits)
 
 @app.route('/manage-items/<int:company_id>', methods=['POST', 'GET'])
 def manage_items(company_id):
@@ -182,7 +207,39 @@ def booking_book(company_id):
     if request.method == "POST":
         pass
     else:
-        return render_template('book-now.html', company_id=company_id)
+        services = Services.query.filter_by(company_id=company_id).all()
+
+        return render_template('book-now.html', company_id=company_id, services = services)
+    
+@app.route('/booking/confirm/<int:service_id>/<int:company_id>', methods=['POST', 'GET'])
+def booking_confirm(service_id, company_id):
+    if request.method == 'POST':
+        name = request.form.get('name')
+        phone = request.form.get('phone')
+        email = request.form.get('email')
+        date = request.form.get('date')
+
+        if not name or not phone or not email or not date:
+            return redirect(f"/booking/book/{company_id}")
+        
+        booking = Bookings(company_id=company_id, service_id=service_id, name=name, phone=phone, email=email, date=date)
+        db.session.add(booking)
+        db.session.commit()
+
+        return redirect(f"/booking/summary/{booking.id}/{company_id}")
+    else:
+        Service = Services.query.get(service_id)
+        company = Company.query.get(company_id)
+
+        return render_template('confirm-booking.html', service=Service, company=company)
+    
+@app.route('/booking/summary/<int:booking_id>/<int:company_id>')
+def booking_summary(booking_id, company_id):
+    booking  = Bookings.query.get(booking_id)
+    service_id = booking.service_id
+    service = Services.query.get(service_id)
+
+    return render_template('summary.html', service=service, booking=booking, company_id=company_id)
 
 
 if __name__ == "__main__":

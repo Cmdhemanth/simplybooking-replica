@@ -106,7 +106,7 @@
               <div>-67.5%</div>
             </div>
 
-            <div class="small-section-count">2</div>
+            <div class="small-section-count">{{bookings_today}}</div>
             <div class="small-section-date">26-09-2024</div>
           </div>
 
@@ -128,7 +128,7 @@
               <div>-67.5%</div>
             </div>
 
-            <div class="small-section-count">2</div>
+            <div class="small-section-count">{{bookings_thisWeek}}</div>
             <div class="small-section-date">26-09-2024</div>
           </div>
 
@@ -151,7 +151,8 @@
             </div>
 
             <div class="small-section-count">
-              2 <span style="font-size: 1.4rem; font-weight: 600">h</span>
+              {{workLoad[0]}}
+              <span style="font-size: 1.4rem; font-weight: 600">h</span>
             </div>
             <div class="small-section-date">26-09-2024</div>
           </div>
@@ -175,7 +176,8 @@
             </div>
 
             <div class="small-section-count">
-              2 <span style="font-size: 1.4rem; font-weight: 600">inr</span>
+              {{revenue}}
+              <span style="font-size: 1.4rem; font-weight: 600">inr</span>
             </div>
             <div class="small-section-date">26-09-2024</div>
           </div>
@@ -199,7 +201,7 @@
               <div>-67.5%</div>
             </div>
 
-            <div class="small-section-count">2</div>
+            <div class="small-section-count">{{visits}}</div>
             <div class="small-section-date">26-09-2024</div>
           </div>
 
@@ -238,47 +240,28 @@
               <div>Client</div>
             </div>
 
-            <div class="booking-details-values">
-              <div>
-                <div>26-09-2024</div>
-                <div style="font-size: 80%; color: #6a758c">
-                  26-09-2024 10:08
-                </div>
-              </div>
-              <div>15:50 - 16:30</div>
-              <div class="booking-details-link">Online tutoring</div>
-              <div>by <span class="booking-details-link">Hitesh</span></div>
-              <div>Sassin</div>
-              <div class="booking-details-link">details</div>
-            </div>
+            {% for booking in bookings %}
 
             <div class="booking-details-values">
               <div>
-                <div>26-09-2024</div>
+                <div>{{booking.date}}</div>
                 <div style="font-size: 80%; color: #6a758c">
-                  26-09-2024 10:08
+                  {{booking.date}} 11:08
                 </div>
               </div>
-              <div>15:50 - 16:30</div>
-              <div class="booking-details-link">Online tutoring</div>
-              <div>by <span class="booking-details-link">Hitesh</span></div>
-              <div>Sassin</div>
+              <div>9:00 - 10:00</div>
+              <div class="booking-details-link">{{booking.service_name}}</div>
+              <div>
+                by
+                <span class="booking-details-link"
+                  >{{booking.company_name}}</span
+                >
+              </div>
+              <div>{{booking.name}}</div>
               <div class="booking-details-link">details</div>
             </div>
 
-            <div class="booking-details-values">
-              <div>
-                <div>26-09-2024</div>
-                <div style="font-size: 80%; color: #6a758c">
-                  26-09-2024 10:08
-                </div>
-              </div>
-              <div>15:50 - 16:30</div>
-              <div class="booking-details-link">Online tutoring</div>
-              <div>by <span class="booking-details-link">Hitesh</span></div>
-              <div>Sassin</div>
-              <div class="booking-details-link">details</div>
-            </div>
+            {% endfor %}
           </div>
         </div>
       </section>
