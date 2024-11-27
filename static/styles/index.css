@@ -11,7 +11,7 @@ body {
   font-size: 16px;
 }
 .header--logo-image {
-  width: 194px;
+  width: auto;
   height: 30px;
   margin-left: 20px;
 }
